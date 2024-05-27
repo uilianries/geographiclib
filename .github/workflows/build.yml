@@ -21,11 +21,7 @@ jobs:
 
       - name: CMake Setup
         run: |
-          cmake -S . -B build -G "Visual Studio 17 2022" \
-            -DBUILD_SHARED_LIBS:BOOL=OFF \
-            -DCMAKE_BUILD_TYPE:STRING=${{env.BUILD_TYPE}} \
-            -DCMAKE_INSTALL_PREFIX:PATH=${{github.workspace}}/build/install \
-            -DGEOGRAPHICLIB_PRECISION:STRING=2
+          cmake -S . -B build -G "Visual Studio 17 2022" -DBUILD_SHARED_LIBS:BOOL=OFF -DCMAKE_BUILD_TYPE:STRING=${{env.BUILD_TYPE}} -DCMAKE_INSTALL_PREFIX:PATH=${{github.workspace}}/build/install -DGEOGRAPHICLIB_PRECISION:STRING=2
 
       - name: CMake Build
         run: cmake --build build/ --config ${{env.BUILD_TYPE}}
